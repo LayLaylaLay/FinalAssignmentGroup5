@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联通ui展示</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 393px;
+            height: 852px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .image.active {
+            opacity: 1;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(30, 30, 30, 0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .image-container.show-nav .nav-arrow {
+            opacity: 0.7;
+            pointer-events: all;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(80, 80, 80, 0.8);
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-arrow i {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 24px;
+        }
+
+        .prev-arrow {
+            left: 15px;
+        }
+
+        .next-arrow {
+            right: 15px;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .transparent-btn {
+            position: absolute;
+            background: transparent;
+            cursor: pointer;
+            z-index: 15;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container" id="imageContainer">
+        <div class="loader" id="loader"></div>
+
+        <div class="image active" id="image1"></div>
+
+        <div class="image" id="image2">
+            <div class="transparent-btn" id="btn2" style="left: 35.1px; top: 651.8px; width: 322.8px; height: 73.9px;"></div>
+        </div>
+
+        <div class="image" id="image3">
+            <div class="transparent-btn" id="btn3" style="left: 35.1px; top: 651.8px; width: 322.8px; height: 73.9px;"></div>
+        </div>
+
+        <div class="image" id="image4">
+            <div class="transparent-btn" id="btn4" style="left: 35.1px; top: 651.8px; width: 322.8px; height: 73.9px;"></div>
+        </div>
+
+        <div class="image" id="image5">
+            <div class="transparent-btn" id="btn5" style="left: 95.7px; top: 728.5px; width: 36.5px; height: 36.5px;"></div>
+            <div class="transparent-btn" id="btn5_1" style="left: 122.7px; top: 704.4px; width: 83.1px; height: 83.1px;"></div>
+            <div class="transparent-btn" id="btn5_3" style="left: 86.2px; top: 729.2px; width: 36.5px; height: 36.5px;"></div>
+        </div>
+
+        <div class="image" id="image6">
+            <div class="transparent-btn" id="btn6" style="left: 85.2px; top: 725.5px; width: 45px; height: 45px;"></div>
+            <div class="transparent-btn" id="btn6_11" style="left: 159.6px; top: 721.2px; width: 73.8px; height: 73.8px;"></div>
+        </div>
+
+        <div class="image" id="image7">
+            <div class="transparent-btn" id="btn7_1" style="left: 122.7px; top: 704.4px; width: 83.1px; height: 83.1px;"></div>
+            <div class="transparent-btn" id="btn7_2" style="left: 26.5px; top: 733.9px; width: 36.5px; height: 36.5px;"></div>
+            <div class="transparent-btn" id="btn7_12" style="left: 133.5px; top: 438.3px; width: 43.7px; height: 38.5px;"></div>
+            <div class="transparent-btn" id="btn7_13" style="left: 316.2px; top: 541.3px; width: 52px; height: 18.8px;"></div>
+        </div>
+
+        <div class="image" id="image8">
+            <div class="transparent-btn" id="btn8_1" style="left: 26.5px; top: 733.9px; width: 36.5px; height: 36.5px;"></div>
+            <div class="transparent-btn" id="btn8_3" style="left: 86.2px; top: 729.2px; width: 36.5px; height: 36.5px;"></div>
+        </div>
+
+        <div class="image" id="image9">
+            <div class="transparent-btn" id="btn9" style="left: 18px; top: 293.3px; width: 354.1px; height: 68.3px;"></div>
+            <div class="transparent-btn" id="btn9_11" style="left: 159.6px; top: 721.2px; width: 73.8px; height: 73.8px;"></div>
+            <div class="transparent-btn" id="btn9_6" style="left: 19.9px; top: 733.3px; width: 25px; height: 25px;"></div>
+        </div>
+
+        <div class="image" id="image10">
+            <div class="transparent-btn" id="btn10_11" style="left: 159.6px; top: 721.2px; width: 73.8px; height: 73.8px;"></div>
+            <div class="transparent-btn" id="btn10_6" style="left: 19.9px; top: 733.3px; width: 25px; height: 25px;"></div>
+        </div>
+
+        <div class="image" id="image11">
+            <div class="transparent-btn" id="btn11_6" style="left: 19.9px; top: 733.3px; width: 25px; height: 25px;"></div>
+            <div class="transparent-btn" id="btn11_9" style="left: 85.2px; top: 725.5px; width: 45px; height: 45px;"></div>
+        </div>
+
+        <div class="image" id="image12">
+            <div class="transparent-btn" id="btn12_7" style="left: 20.1px; top: 23.2px; width: 21.3px; height: 21.3px;"></div>
+        </div>
+
+        <div class="image" id="image13">
+            <div class="transparent-btn" id="btn13_7" style="left: 20.1px; top: 23.2px; width: 21.3px; height: 21.3px;"></div>
+        </div>
+
+        <div class="nav-arrow prev-arrow" id="prevArrow">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="nav-arrow next-arrow" id="nextArrow">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageContainer = document.getElementById('imageContainer');
+            const loader = document.getElementById('loader');
+            const prevArrow = document.getElementById('prevArrow');
+            const nextArrow = document.getElementById('nextArrow');
+
+            const images = [
+                { id: "image1", file: "jpg.1.png" },
+                { id: "image2", file: "jpg.2.png" },
+                { id: "image3", file: "jpg.3.png" },
+                { id: "image4", file: "jpg.4.png" },
+                { id: "image5", file: "jpg.5.png" },
+                { id: "image6", file: "jpg.6.png" },
+                { id: "image7", file: "jpg.7.png" },
+                { id: "image8", file: "jpg.8.png" },
+                { id: "image9", file: "jpg.9.png" },
+                { id: "image10", file: "jpg.10.png" },
+                { id: "image11", file: "jpg.11.png" },
+                { id: "image12", file: "jpg.12.png" },
+                { id: "image13", file: "jpg.13.png" }
+            ];
+
+            images.forEach(img => {
+                document.getElementById(img.id).style.backgroundImage = `url('${img.file}')`;
+            });
+
+            let currentIndex = 0;
+
+            setTimeout(() => {
+                switchToImage(1);
+                loader.style.display = 'none';
+            }, 3000);
+
+            function switchToImage(index) {
+                images.forEach(img => {
+                    document.getElementById(img.id).classList.remove('active');
+                });
+
+                document.getElementById(images[index].id).classList.add('active');
+
+                currentIndex = index;
+
+                if (currentIndex >= 1 && currentIndex <= 3) {
+                    imageContainer.classList.add('show-nav');
+                } else {
+                    imageContainer.classList.remove('show-nav');
+                }
+            }
+
+            prevArrow.addEventListener('click', () => {
+                if (currentIndex === 1) {
+                    switchToImage(3);
+                } else if (currentIndex === 2) {
+                    switchToImage(1);
+                } else if (currentIndex === 3) {
+                    switchToImage(2);
+                }
+            });
+
+            nextArrow.addEventListener('click', () => {
+                if (currentIndex === 1) {
+                    switchToImage(2);
+                } else if (currentIndex === 2) {
+                    switchToImage(3);
+                } else if (currentIndex === 3) {
+                    switchToImage(1);
+                }
+            });
+
+            document.getElementById('btn2').addEventListener('click', () => {
+                switchToImage(4);
+            });
+
+            document.getElementById('btn3').addEventListener('click', () => {
+                switchToImage(4);
+            });
+
+            document.getElementById('btn4').addEventListener('click', () => {
+                switchToImage(5);
+            });
+
+            document.getElementById('btn5').addEventListener('click', () => {
+                switchToImage(6);
+            });
+
+            document.getElementById('btn5_1').addEventListener('click', () => {
+                switchToImage(7);
+            });
+
+            document.getElementById('btn7_1').addEventListener('click', () => {
+                switchToImage(7);
+            });
+
+            document.getElementById('btn7_2').addEventListener('click', () => {
+                switchToImage(4);
+            });
+
+            document.getElementById('btn8_1').addEventListener('click', () => {
+                switchToImage(4);
+            });
+
+            document.getElementById('btn5_3').addEventListener('click', () => {
+                switchToImage(6);
+            });
+
+            document.getElementById('btn8_3').addEventListener('click', () => {
+                switchToImage(6);
+            });
+
+            document.getElementById('btn6').addEventListener('click', () => {
+                switchToImage(8);
+            });
+
+            document.getElementById('btn9').addEventListener('click', () => {
+                switchToImage(9);
+            });
+
+            document.getElementById('btn6_11').addEventListener('click', () => {
+                switchToImage(10);
+            });
+
+            document.getElementById('btn9_11').addEventListener('click', () => {
+                switchToImage(10);
+            });
+
+            document.getElementById('btn10_11').addEventListener('click', () => {
+                switchToImage(10);
+            });
+
+            document.getElementById('btn9_6').addEventListener('click', () => {
+                switchToImage(5);
+            });
+
+            document.getElementById('btn10_6').addEventListener('click', () => {
+                switchToImage(5);
+            });
+
+            document.getElementById('btn11_6').addEventListener('click', () => {
+                switchToImage(5);
+            });
+
+            document.getElementById('btn11_9').addEventListener('click', () => {
+                switchToImage(8);
+            });
+
+            document.getElementById('btn7_12').addEventListener('click', () => {
+                switchToImage(11);
+            });
+
+            document.getElementById('btn12_7').addEventListener('click', () => {
+                switchToImage(6);
+            });
+
+            document.getElementById('btn7_13').addEventListener('click', () => {
+                switchToImage(12);
+            });
+
+            document.getElementById('btn13_7').addEventListener('click', () => {
+                switchToImage(6);
+            });
+
+        });
+    </script>
+</body>
+</html>
